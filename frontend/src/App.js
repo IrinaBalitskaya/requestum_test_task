@@ -13,7 +13,7 @@ const App = () => {
       setIsLoading(true);
       const axiosConfig = axios.create();
       const response = await axiosConfig.get(
-        '/api/github_projects/get-common-contributors-repos/',
+        'http://127.0.0.1:8000/api/github_projects/get-common-contributors-repos/',
         {
           params: {
             github_repo_url: inputValue,
