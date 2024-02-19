@@ -13,6 +13,7 @@ class GithubRepos:
 
     def __init__(self):
         # Init GitHub REST API / GraphQL headers
+        print(settings.GITHUB_API_KEY)
         github_auth = Auth.Token(settings.GITHUB_API_KEY)
         self.github_api = Github(auth=github_auth)
         self.headers = {"Authorization": f"Bearer {settings.GITHUB_API_KEY}"}
@@ -29,7 +30,8 @@ class GithubRepos:
         try:
             # Fetching repo details
             repo = self.github_api.get_repo(f"{owner}/{repo_name}")
-        except GithubException:
+        except GithubException as e:
+            print(e)
             raise APIException("URL does not match any Github Repos")
 
         # Getting repo contributors

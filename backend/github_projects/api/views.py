@@ -14,7 +14,7 @@ from github_projects.services import GithubRepos
 
 class GithubViewSet(GenericViewSet):
 
-    @swagger_auto_schema(request_body=CommonContributorsInputSerializer)
+    @swagger_auto_schema(query_serializer=CommonContributorsInputSerializer)
     @action(detail=False,
             serializer_class=CommonContributorsSerializer,
             url_name='get-common-contributors-repos',
